@@ -1,0 +1,202 @@
+---
+title: Integrations and Extensions
+description: Connect CodeCraftters with your favorite tools to enhance your documentation process.
+---
+
+## Overview
+
+CodeCraftters supports seamless integrations with version control systems, APIs, webhooks, and more. You can sync documentation with GitHub or GitLab repositories, receive notifications via webhooks, connect to third-party services, embed external content, and even develop custom plugins. These features streamline your workflow and keep your docs up-to-date across platforms.
+
+<Callout kind="tip">
+Start with GitHub or GitLab integration for automatic doc syncing. Use webhooks for real-time updates.
+</Callout>
+
+## Available Integrations
+
+Explore key integrations through these cards. Each provides quick setup guides and benefits.
+
+<Columns cols={3}>
+  <Card title="GitHub" icon="github" href="#github-gitlab">
+    Sync docs with repositories for version control and CI/CD pipelines.
+  </Card>
+  <Card title="GitLab" icon="git-branch" href="#github-gitlab">
+    Integrate with GitLab for merge request previews and automated deployments.
+  </Card>
+  <Card title="Webhooks" icon="zap" href="#webhooks">
+    Set up notifications for doc changes and external events.
+  </Card>
+</Columns>
+
+## GitHub and GitLab Integration
+
+Connect your CodeCraftters workspace to GitHub or GitLab to automatically publish documentation from repositories.
+
+<Tabs>
+  <Tab title="GitHub" icon="github">
+    <Steps>
+      <Step title="Create App" icon="settings">
+        Go to GitHub Settings > Developer settings > GitHub Apps. Create a new app with `https://api.example.com/github/webhook` as the webhook URL.
+      </Step>
+      <Step title="Configure Permissions">
+        Grant `repository` and `pull_requests` permissions. Install the app on your repo.
+      </Step>
+      <Step title="Connect in CodeCraftters">
+        In your workspace, navigate to Integrations > GitHub. Paste the app ID and generate a private key.
+      </Step>
+    </Steps>
+  </Tab>
+  <Tab title="GitLab" icon="git-branch">
+    <Steps>
+      <Step title="Create Project Access Token">
+        In GitLab, go to User Settings > Access Tokens. Create a token with `api` and `read_repository` scopes.
+      </Step>
+      <Step title="Add Webhook">
+        Project Settings > Webhooks. Set URL to `https://api.example.com/gitlab/webhook`.
+      </Step>
+      <Step title="Link in CodeCraftters">
+        Integrations > GitLab. Enter token and project ID.
+      </Step>
+    </Steps>
+  </Tab>
+</Tabs>
+
+## Third-Party API Connections
+
+Connect CodeCraftters to external APIs for dynamic content. Use the Integrations API to fetch data.
+
+<Request tabs="JavaScript,cURL" show-lines="true">
+  ```javascript
+const response = await fetch('https://api.example.com/v1/integrations', {
+  method: 'POST',
+  headers: {
+    'Authorization': `Bearer ${YOUR_API_KEY}`,
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    provider: 'slack',
+    config: { webhookUrl: 'https://hooks.slack.com/services/YOUR/SLACK/WEBHOOK' }
+  })
+});
+  ```
+  ```bash
+curl -X POST https://api.example.com/v1/integrations \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "provider": "slack",
+    "config": { "webhookUrl": "https://hooks.slack.com/services/YOUR/SLACK/WEBHOOK" }
+  }'
+  ```
+</Request>
+
+<Response tabs="200">
+```json
+{
+  "id": "int_123abc",
+  "provider": "slack",
+  "status": "active",
+  "created_at": "2024-01-15T10:30:00Z"
+}
+```
+</Response>
+
+<ParamField path="provider" param-type="string" required="true">
+  Service name like `slack`, `discord`, or `custom`.
+</ParamField>
+
+<ParamField header="Authorization" param-type="string" required="true">
+  Bearer token: `Bearer YOUR_API_KEY`.
+</ParamField>
+
+## Webhook Setup for Notifications
+
+Set up webhooks to receive events from CodeCraftters, such as doc updates.
+
+<CodeGroup tabs="JavaScript,Python">
+  ```javascript
+const express = require('express');
+const app = express();
+app.use(express.json());
+
+app.post('/webhook', (req, res) => {
+  console.log('Event:', req.body.event);
+  console.log('Data:', req.body.data);
+  res.status(200).send('OK');
+});
+
+app.listen(3000);
+  ```
+  ```python
+from flask import Flask, request, jsonify
+app = Flask(__name__)
+
+@app.route('/webhook', methods=['POST'])
+def webhook():
+    data = request.json
+    print(f"Event: {data['event']}")
+    print(f"Data: {data['data']}")
+    return jsonify({'status': 'OK'}), 200
+
+if __name__ == '__main__':
+    app.run(port=3000)
+  ```
+</CodeGroup>
+
+Register your webhook endpoint:
+
+```
+POST https://api.example.com/v1/webhooks
+Authorization: Bearer YOUR_API_KEY
+{
+  "url": "https://your-webhook-url.com/webhook",
+  "events": ["doc.updated", "doc.published"]
+}
+```
+
+## Embedding External Content
+
+Embed iframes or scripts from external sources securely.
+
+```html
+<iframe src="https://docs.example.com/embed/chart" width="100%" height="400"></iframe>
+```
+
+Use the Embed API for dynamic content:
+
+<Request show-lines="false">
+```bash
+curl https://api.example.com/v1/embeds \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -d '{"url": "https://external.com/widget", "type": "iframe"}'
+```
+</Request>
+
+## Custom Plugin Development
+
+<Expandable title="Advanced: Build Custom Plugins" default-open="false">
+
+Develop plugins using the Plugin SDK. Extend CodeCraftters with custom auth, UI components, or data sources.
+
+```javascript
+// plugin.js
+export default {
+  name: 'my-plugin',
+  version: '1.0.0',
+  init: (context) => {
+    context.on('doc.save', async (doc) => {
+      await fetch('https://api.example.com/custom', {
+        method: 'POST',
+        body: JSON.stringify(doc)
+      });
+    });
+  }
+};
+```
+
+Publish to `https://plugins.codecraftters.com`.
+
+</Expandable>
+
+<Callout kind="success">
+Your integrations are now live. Monitor them in the dashboard at `https://dashboard.example.com/integrations`.
+</Callout>

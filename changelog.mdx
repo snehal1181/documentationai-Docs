@@ -1,0 +1,146 @@
+---
+title: Changelog
+description: Track the latest updates and improvements to CodeCraftters.
+---
+
+<Callout kind="info">
+  Stay up to date with the latest CodeCraftters releases. Check this page regularly for new features, bug fixes, and important announcements.
+</Callout>
+
+## Recent Updates
+
+<Update label="2024-10-15" description="v2.1.0" tags={["feature", "improvement"]}>
+
+## New Features
+
+- Added real-time collaboration for shared documentation spaces
+- Introduced customizable themes with brand color support (e.g., `#D4AF37` for gold accents)
+- New search indexing for faster navigation across projects
+
+## Improvements
+
+- Enhanced editor performance by 40% for large documents
+- Better mobile responsiveness for on-the-go editing
+
+## Bug Fixes
+
+- Fixed rendering issues with embedded images from external sources
+- Resolved sync conflicts during multi-user edits
+
+</Update>
+
+<Update label="2024-09-20" description="v2.0.0" tags={["feature", "breaking"]}>
+
+## New Features
+
+- Complete rewrite of the documentation engine with MDX v3 support
+- Integrated version history and rollback for all pages
+- API endpoints for programmatic doc management (`/api/docs/{spaceId}`)
+
+## Breaking Changes
+
+- Updated configuration format from YAML to JSON
+- Removed legacy shortcodes; migrate to modern components
+
+## Bug Fixes
+
+- Patched security vulnerability in file upload handling
+
+</Update>
+
+<Update label="2024-08-10" description="v1.5.0" tags={["bugfix", "improvement"]}>
+
+## Improvements
+
+- Optimized image handling for jewelry catalogs and high-res assets
+- Added preview mode for shop collection pages
+
+## Bug Fixes
+
+- Fixed broken links in generated navigation
+- Corrected responsive layout issues on collection grids
+
+</Update>
+
+## Upgrading to the Latest Version
+
+Follow these steps to upgrade your CodeCraftters instance safely.
+
+<Steps>
+  <Step title="Backup Your Data" icon="database">
+
+    Create a full backup of your documentation spaces.
+
+````bash
+# Using the CLI tool
+codecraftters backup --space=all --output=backup-$(date +%Y%m%d).tar.gz
+````
+
+  </Step>
+  <Step title="Update Package" icon="download">
+
+    <Tabs>
+      <Tab title="npm" icon="package">
+````bash
+npm install codecraftters@latest
+````
+      </Tab>
+      <Tab title="yarn" icon="package">
+````bash
+yarn add codecraftters@latest
+````
+      </Tab>
+    </Tabs>
+
+  </Step>
+  <Step title="Run Migrations" icon="settings">
+
+    Apply database migrations for new features.
+
+````bash
+codecraftters migrate --version=2.1.0
+````
+
+    Review any breaking changes from v2.0.0 in the notes above.
+
+  </Step>
+  <Step title="Restart Service" icon="refresh-cw">
+
+    Restart your CodeCraftters server.
+
+````bash
+codecraftters restart
+````
+
+  </Step>
+</Steps>
+
+<Callout kind="tip">
+  After upgrading, test your key workflows like editing jewelry collection pages and image embeds.
+</Callout>
+
+## Upcoming Roadmap
+
+Discover what's coming next to CodeCraftters.
+
+<Columns cols={3}>
+  <Card title="AI Assistant" icon="bot" href="#">
+    Automated content generation and smart suggestions for doc outlines.
+  </Card>
+  <Card title="Advanced Analytics" icon="bar-chart-3" href="#">
+    Track document views, edits, and user engagement metrics.
+  </Card>
+  <Card title="Webhook Integrations" icon="zap" href="#">
+    Connect to external services like shop platforms for live updates.
+  </Card>
+</Columns>
+
+<Expandable title="Detailed Roadmap Timeline" default-open="false">
+
+| Quarter | Key Deliverables |
+|---------|------------------|
+| Q4 2024 | AI features, analytics dashboard |
+| Q1 2025 | Webhook support, multi-language docs |
+| Q2 2025 | Enterprise SSO, custom domains |
+
+</Expandable>

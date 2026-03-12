@@ -1,0 +1,114 @@
+---
+title: Introduction to CodeCraftters
+description: Discover CodeCraftters, a powerful platform for organizing and managing project documentation with ease and efficiency.
+---
+
+<Callout kind="info" title="Starter Kit Template">
+  This documentation was generated as a starter kit template based on your brand. Please review and customize the content to accurately reflect your product's features, APIs, and capabilities.
+</Callout>
+
+## Overview
+
+CodeCraftters provides a centralized space for teams to create, organize, and maintain project documentation. You can build structured docs with Markdown and MDX support, collaborate in real-time, and publish beautiful, searchable documentation sites. Customize themes with your brand colors, like `#D4AF37` for accents, to match your identity.
+
+This platform streamlines workflows for developers and teams, reducing documentation silos and ensuring knowledge stays accessible.
+
+## Key Features
+
+<Columns cols={3}>
+  <Card title="Structured Organization" icon="book-open" href="#organization">
+    Create hierarchical pages, use tables of contents, and tag content for easy navigation.
+  </Card>
+  <Card title="Real-Time Collaboration" icon="users" href="#collaboration">
+    Invite team members, edit simultaneously, and track changes with version history.
+  </Card>
+  <Card title="Custom Theming" icon="palette" href="#theming">
+    Apply brand colors such as `#D4AF37`, custom logos, and layouts without coding.
+  </Card>
+</Columns>
+
+## Benefits for Teams and Developers
+
+<Tabs>
+  <Tab title="Teams" icon="users">
+    Centralize knowledge to onboard new members quickly. Use search and tags to find docs instantly, improving productivity across projects.
+  </Tab>
+  <Tab title="Developers" icon="code">
+    Integrate with Git for version control. Embed code examples and API references directly in docs for self-serve developer portals.
+  </Tab>
+</Tabs>
+
+<Callout kind="tip">
+  Start with your brand color `#D4AF37` in the theme settings for a cohesive look.
+</Callout>
+
+## Quick Start
+
+Get up and running in minutes.
+
+<Steps>
+  <Step title="Sign Up" icon="user-plus">
+    Create an account at `https://dashboard.example.com/signup`.
+  </Step>
+  <Step title="Create Workspace" icon="folder-plus">
+    Set up a new project space and invite collaborators.
+  </Step>
+  <Step title="Add First Page" icon="plus">
+    Write your initial doc using the editor.
+
+    <CodeGroup tabs="Markdown,MDX">
+    ````markdown
+    # Welcome
+
+    Your first documentation page.
+    ````
+
+    ````mdx
+    ## Hello World
+
+    Use components like `<Callout>` for rich content.
+    ````
+    </CodeGroup>
+  </Step>
+  <Step title="Publish" icon="globe">
+    Deploy your site to `https://docs.example.com`.
+  </Step>
+</Steps>
+
+## Customization Options
+
+Tailor CodeCraftters to your brand:
+
+- **Brand Colors**: Set primary color to `#D4AF37` in workspace settings.
+- **Navigation**: Configure sidebar menus and search.
+- **Components**: Enable MDX components for interactive docs.
+
+<Expandable title="Advanced Theming" default-open="false">
+  Edit `theme.config.js` to extend styles:
+
+  ````javascript
+  export default {
+    color: {
+      primary: '#D4AF37',
+    },
+  };
+  ````
+</Expandable>
+
+## Next Steps
+
+<Card title="Quickstart Guide" icon="zap" href="/quickstart">
+  Dive into detailed setup instructions.
+</Card>
+
+<Card title="Authentication" icon="lock" href="/authentication">
+  Secure your workspace with API keys.
+</Card>
+
+<Card title="Changelog" icon="git-branch" href="/changelog">
+  See latest updates and improvements.
+</Card>
+
+<Callout kind="success">
+  Ready to begin? Follow the Quick Start steps above and explore the linked guides.
+</Callout>

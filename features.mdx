@@ -1,0 +1,160 @@
+---
+title: Core Features
+description: Explore the essential capabilities of CodeCraftters to streamline your documentation workflow.
+---
+
+## Overview
+
+CodeCraftters provides powerful tools to manage your project documentation efficiently. You can organize content into folders, track changes with version control, collaborate seamlessly with teams, search across all documents, and export or share your work easily. These features help you maintain a structured, up-to-date documentation space tailored to your needs.
+
+<Callout kind="info">
+These core features form the foundation of CodeCraftters. Start with organization to build a scalable structure, then leverage collaboration and search as your docs grow.
+</Callout>
+
+<Columns cols={3}>
+  <Card title="Organization & Folders" icon="folder" href="#document-organization">
+    Structure your docs hierarchically for easy navigation.
+  </Card>
+  <Card title="Version Control" icon="git-branch" href="#version-control">
+    Track changes and revert to previous versions effortlessly.
+  </Card>
+  <Card title="Collaboration" icon="users" href="#collaboration">
+    Work with your team in real-time with reviews and comments.
+  </Card>
+</Columns>
+
+## Document Organization and Folders
+
+Organize your documentation into folders and subfolders to create a logical hierarchy. This keeps related pages together, making it simple to navigate large projects.
+
+<Steps>
+  <Step title="Create a Folder" icon="plus">
+    Use the UI or API to add folders.
+
+````bash
+curl -X POST https://api.example.com/docs/folders \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -d '{"name": "API Reference", "parentId": null}'
+````
+
+  </Step>
+  <Step title="Move Documents" icon="move">
+    Drag and drop in the dashboard or update via API.
+
+````javascript
+await fetch('https://api.example.com/docs/{docId}/move', {
+  method: 'PATCH',
+  headers: { 'Authorization': `Bearer ${YOUR_API_KEY}` },
+  body: JSON.stringify({ folderId: 'folder-123' })
+});
+````
+
+  </Step>
+  <Step title="Nest Subfolders" icon="folder-plus">
+    Create unlimited nesting for complex structures.
+  </Step>
+</Steps>
+
+## Version Control for Docs
+
+Version control lets you track every change to your documents, view history, and restore previous versions. Integrate with Git or use built-in tracking.
+
+<CodeGroup tabs="Git Integration,API History">
+````javascript
+// Fetch version history
+const history = await fetch('https://api.example.com/docs/{docId}/versions', {
+  headers: { 'Authorization': `Bearer ${YOUR_API_KEY}` }
+}).then(res => res.json());
+````
+
+````python
+import requests
+response = requests.get(
+    'https://api.example.com/docs/{docId}/versions',
+    headers={'Authorization': f'Bearer {YOUR_API_KEY}'}
+)
+print(response.json())
+````
+</CodeGroup>
+
+<Callout kind="tip">
+Compare diffs visually in the dashboard or export history for audits.
+</Callout>
+
+## Collaboration Tools for Teams
+
+Invite team members, assign roles, and collaborate with comments and real-time editing. Manage permissions at folder or document level.
+
+<Tabs>
+  <Tab title="Invite Members" icon="user-plus">
+    Add collaborators via email.
+
+    <ParamField path="teamId" param-type="string" required="true">
+      Your team identifier.
+    </ParamField>
+
+````bash
+curl -X POST https://api.example.com/teams/{teamId}/members \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -d '{"email": "team@company.com", "role": "editor"}'
+````
+
+  </Tab>
+  <Tab title="Review Workflow" icon="eye">
+    Request reviews and resolve comments.
+
+    Use `@mentions` in comments: `@alice review this section`.
+  </Tab>
+</Tabs>
+
+## Search and Indexing Functionality
+
+Full-text search indexes all your documents automatically. Filter by folder, tags, or date for precise results.
+
+<Expandable title="Advanced Search Operators" default-open="false">
+  Use operators like `filename:api` or `folder:reference >2023`.
+
+  Example query: `auth AND token folder:security`
+
+  Results appear instantly with previews.
+</Expandable>
+
+| Feature | Description |
+|---------|-------------|
+| Full-Text | Searches titles, content, and metadata |
+| Filters | By folder, tag, author, date range |
+| Indexing | Automatic on save, supports 1M+ pages |
+
+## Export and Sharing Options
+
+Export docs to PDF, Markdown, or HTML. Generate shareable links with access controls.
+
+<Steps>
+  <Step title="Export Single Doc" icon="download">
+    Select format in the editor menu.
+  </Step>
+  <Step title="Share Folder" icon="share-2">
+    Create public or private links.
+
+````javascript
+const shareLink = await fetch('https://api.example.com/docs/{docId}/share', {
+  method: 'POST',
+  headers: { 'Authorization': `Bearer ${YOUR_API_KEY}` },
+  body: JSON.stringify({ public: true, expiresIn: '30d' })
+});
+````
+
+  </Step>
+  <Step title="Bulk Export" icon="package">
+    Zip entire folders for offline use.
+  </Step>
+</Steps>
+
+<Columns cols={2}>
+  <Card title="Quickstart" icon="zap" href="/quickstart">
+    Get started in minutes.
+  </Card>
+  <Card title="Authentication" icon="lock" href="/authentication">
+    Secure your docs.
+  </Card>
+</Columns>

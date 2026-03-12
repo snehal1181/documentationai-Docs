@@ -1,0 +1,176 @@
+---
+title: Quickstart Guide
+description: Set up your CodeCraftters account and create your first documentation space in just a few minutes.
+---
+
+## Prerequisites
+
+<Callout kind="info">
+Before starting, ensure you have:
+- A modern web browser like Chrome, Firefox, or Safari
+- A valid email address for account verification
+- Optional: Existing documentation files in Markdown or HTML format for import
+</Callout>
+
+## Create Your Account
+
+Follow these steps to sign up and get verified.
+
+<Steps>
+  <Step title="Sign Up" icon="user-plus">
+    Navigate to [https://app.codecraftters.com/signup](https://app.codecraftters.com/signup).
+
+    Fill in your email, create a strong password, and complete the CAPTCHA.
+
+    Click **Create Account**.
+  </Step>
+
+  <Step title="Verify Email" icon="mail">
+    Check your inbox for a verification email from CodeCraftters.
+
+    Click the verification link or enter the provided code on the app.
+
+    You'll be redirected to your dashboard upon success.
+  </Step>
+</Steps>
+
+## Set Up Your First Project Space
+
+Project spaces organize your documentation by project or team.
+
+<Steps>
+  <Step title="Create Space" icon="folder-plus">
+    From the dashboard, click **New Space**.
+
+    Enter a name like `My First Project` and select a template (e.g., "Empty" or "API Docs").
+
+    Click **Create Space**.
+  </Step>
+
+  <Step title="Configure Settings" icon="settings">
+    In the space settings, add a description and invite team members via email.
+
+    Set visibility to `Public` or `Private` as needed.
+  </Step>
+</Steps>
+
+## Import Initial Documentation
+
+Import existing docs to populate your space quickly.
+
+<Tabs>
+  <Tab title="Manual Upload" icon="upload">
+    Drag and drop Markdown files into the space editor.
+
+    Or use the import button to select files from your device.
+
+````markdown
+# Welcome to My Project
+
+This is your first imported page.
+
+## Features
+
+- Feature one
+- Feature two
+````
+  </Tab>
+
+  <Tab title="GitHub Repo" icon="github">
+    Connect your GitHub account via **Integrations > GitHub**.
+
+    Select a repository and branch. CodeCraftters syncs Markdown files automatically.
+
+    <Callout kind="tip">
+      Ensure your repo uses standard Markdown files in a `docs/` folder.
+    </Callout>
+  </Tab>
+
+  <Tab title="Zip Archive" icon="package">
+    Prepare a ZIP of your docs folder.
+
+    Upload via **Import > ZIP Archive**. Supports nested folders.
+  </Tab>
+</Tabs>
+
+<CodeGroup tabs="Markdown,HTML">
+````markdown
+# API Endpoint
+
+## GET /users
+
+Returns user list.
+````
+
+````html
+<!DOCTYPE html>
+<html>
+<head><title>Users</title></head>
+<body>
+  <h1>User List</h1>
+</body>
+</html>
+````
+</CodeGroup>
+
+## Basic Interface Tour
+
+<Image
+  src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1200&auto=format&fit=crop"
+  alt="CodeCraftters dashboard interface"
+  width="1200"
+  height="600"
+/>
+
+Key areas:
+
+- **Sidebar**: Navigate spaces, pages, and settings
+- **Editor**: Real-time Markdown/ visual editor
+- **Preview**: Live site preview
+- **Publish**: One-click deployment
+
+<Expandable title="Advanced Editor Features" default-open="false">
+  Use shortcuts like `Ctrl+B` for bold or `/image` for embeds.
+
+  Supports custom themes and SEO settings.
+</Expandable>
+
+## Publish Your First Doc Page
+
+<Steps>
+  <Step title="Edit Page" icon="edit-3">
+    Click **New Page** in your space.
+
+    Add content using the editor.
+  </Step>
+
+  <Step title="Preview & Publish" icon="eye">
+    Preview changes, then click **Publish**.
+
+    Share the live URL: `https://docs.codecraftters.com/my-first-project/welcome`
+  </Step>
+</Steps>
+
+## Next Steps
+
+<Columns cols={2}>
+  <Card title="Authentication" icon="shield" href="/authentication">
+    Secure your spaces with API keys and OAuth.
+  </Card>
+
+  <Card title="Customization" icon="palette" href="/configuration">
+    Themes, domains, and advanced settings.
+  </Card>
+
+  <Card title="Guides" icon="book-open" href="/guides">
+    Deep dive into features and best practices.
+  </Card>
+
+  <Card title="Help Center" icon="help-circle" href="/help-center">
+    FAQs and support resources.
+  </Card>
+</Columns>
+
+<Callout kind="success">
+  Congratulations! You've published your first docs. Explore the dashboard to add more pages.
+</Callout>
